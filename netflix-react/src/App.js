@@ -9,6 +9,7 @@ import Galleria3 from './components/Galleria3';
 import Footer from './components/Footer';
 
 function App() {
+  
   return (
     <div className="App">
       <Container fluid >

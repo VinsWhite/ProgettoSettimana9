@@ -1,13 +1,26 @@
 /* Questo componente è usato per ricreare la navbar */
-import React from 'react';
+import React, { useState } from 'react';
 import { Container, Nav, Navbar, Dropdown } from 'react-bootstrap';
+import GestisciProfili from './GestisciProfili';
 
 export default function NavbarComp() {
+
+  const [mostraGestisciProfili, setMostraGestisciProfili] = useState(false);
+
+  const viewProfile = () => {
+    setMostraGestisciProfili(true);
+  }
+
+  const nascondiComponenti = () => {
+    setMostraGestisciProfili(false);
+    
+  }
+
   return (
     <>
         <Navbar expand="lg ms-2">
             <Container fluid>
-                <Navbar.Brand className='text-danger fw-bold' href="#home">NETFLIX</Navbar.Brand>
+                <Navbar.Brand onClick={nascondiComponenti} className='text-danger fw-bold' href="#home">NETFLIX</Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                 <Nav className="me-auto">
@@ -26,7 +39,7 @@ export default function NavbarComp() {
                       </Dropdown.Toggle>
 
                       <Dropdown.Menu className='bg-dark'>
-                        <Dropdown.Item className='bg-dark text-light' href="#/action-1">Gestisci i profili</Dropdown.Item>
+                        <Dropdown.Item onClick={viewProfile} className='bg-dark text-light' href="#/action-1">Gestisci i profili</Dropdown.Item>
                         <Dropdown.Item className='bg-dark text-light' href="#/action-2">Account</Dropdown.Item>
                         <Dropdown.Divider className='bg-light' />
                         <Dropdown.Item className='bg-dark text-light' href="#/action-3">Impostazioni</Dropdown.Item>
@@ -36,6 +49,8 @@ export default function NavbarComp() {
                 </Navbar.Collapse>
             </Container>
         </Navbar>
+
+        {mostraGestisciProfili && <GestisciProfili />}
     </>
   )
 }
