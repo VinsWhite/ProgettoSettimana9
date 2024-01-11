@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import { urlApi } from '../data/urlApi';
+import { Spinner } from 'react-bootstrap';
 
 export default class Galleria1 extends Component {
   constructor(props) {
     super(props);
     this.state = {
       images: [], 
+      isLoading: false
     };
   }
 
@@ -17,7 +19,7 @@ export default class Galleria1 extends Component {
       .then((json) => {
         console.log(json);
         this.setState({ images: json.Search || [] }, () => {
-          console.log('Images after setState:', this.state.images);
+          console.log('Immagini dopo il setState:', this.state.images);
         });
       })
       .catch((err) => console.error(err));
@@ -29,6 +31,7 @@ export default class Galleria1 extends Component {
   
     return (
       <>
+      {this.state.isLoading && <Spinner animation="border" />}
         <h4 className="text-light ms-4">Harry Potter - i più acclamati dalla critica </h4>
         <div className="mx-2 row row-cols-1 row-cols-sm-2 row-cols-lg-4 row-cols-xl-6 mb-4 no-gutters text-center">
           {firstSixImages.map((image, index) => (

@@ -6,6 +6,7 @@ import NavbarComp from './components/NavbarComp';
 import Underbar from './components/Underbar';
 import Galleria2 from './components/Galleria2';
 import Galleria3 from './components/Galleria3';
+import Footer from './components/Footer';
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
         <Galleria1 />
         <Galleria2 />
         <Galleria3 />
+        <Footer />
 
       </Container>
     </div>
